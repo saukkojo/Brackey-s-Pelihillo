@@ -11,6 +11,8 @@ public class Bubble : Collectible, IBubble
     [SerializeField, Range(0, 1f)]
     private float _speedBoost = 0.05f;
     private float velocity = 0.3f;
+    private Vector2 _spawnPos;
+    private float _randomness = 1;
 
     public float air => _air;
     public float speedBoost => _speedBoost;
@@ -20,8 +22,16 @@ public class Bubble : Collectible, IBubble
     protected override void Awake()
     {
         base.Awake();
+        _spawnPos = transform.position;
         _rigidbody = this.AddOrGetComponent<Rigidbody2D>();
         _rigidbody.isKinematic = true;
-        _rigidbody.velocity = Vector3.up * velocity * (1 + _air * 0.1f);
+        _randomness = Random.Range(0.5f, 2f);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 movement = new Vector2(Mathf.Sin(Time.timeSinceLevelLoad * _randomness) * 0.5f, velocity * (1 + _air * 0.1f));
+        movement *= Time.fixedDeltaTime;
+        _rigidbody.MovePosition(_rigidbody.position + movement);
     }
 }

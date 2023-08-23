@@ -7,4 +7,10 @@ public class Currency : Collectible, ICurrency
 {
     [SerializeField] private int _value = 10;
     public int value => _value;
+
+    public override void Collect()
+    {
+        base.Collect();
+        GameManager.current.bank.AddFunds(value);
+    }
 }

@@ -31,6 +31,11 @@ public class PlayerMover : Mover
         Collectible.onCollect += OnCollect;
     }
 
+    private void OnDisable()
+    {
+        Collectible.onCollect -= OnCollect;
+    }
+
     private void OnCollect(ICollectible obj)
     {
         var bubble = obj as IBubble;
