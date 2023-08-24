@@ -16,6 +16,7 @@ public class Player : Singleton<Player>
 
     private bool useBooster = false;
     private bool waterHit = false;
+    public bool invertTurning = false;
 
     public float air = 100;
 
@@ -117,7 +118,7 @@ public class Player : Singleton<Player>
                     air -= Time.fixedDeltaTime;
                     _mover.Move();
                 }
-                _mover.Turn(_inputReader.turnValue);
+                _mover.Turn(invertTurning ? -_inputReader.turnValue : _inputReader.turnValue);
                 if (air < 0)
                 {
                     ChangeState(PlayerState.None);
