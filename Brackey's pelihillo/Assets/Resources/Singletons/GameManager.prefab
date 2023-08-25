@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shallowModules:
-  - {fileID: 0}
+  - {fileID: 3764413584297632350, guid: 90a4baa477ed17c4e9bd110658968f6a, type: 3}
   deepModules:
-  - {fileID: 0}
+  - {fileID: 3764413584297632350, guid: 90a4baa477ed17c4e9bd110658968f6a, type: 3}
   abyssModules:
-  - {fileID: 0}
+  - {fileID: 3764413584297632350, guid: 90a4baa477ed17c4e9bd110658968f6a, type: 3}
