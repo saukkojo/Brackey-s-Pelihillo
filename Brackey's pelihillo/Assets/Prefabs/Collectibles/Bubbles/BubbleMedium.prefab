@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1507479247088280064, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b8082155b5fc76d41b60b139de33af5f, type: 2}
     - target: {fileID: 3199469390325578525, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
       propertyPath: m_Name
       value: BubbleMedium
