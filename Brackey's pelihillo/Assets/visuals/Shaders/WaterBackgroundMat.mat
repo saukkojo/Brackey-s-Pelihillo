@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0.343
+    - _Depth: 0
     - _ScreenBottomLocation: 1
     - _ScreenTopLocation: 0
     - _SecondaryTextureScale: 1
