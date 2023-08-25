@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0
+    - _Depth: 0.343
     - _ScreenBottomLocation: 1
     - _ScreenTopLocation: 0
     - _SecondaryTextureScale: 1
@@ -49,10 +49,10 @@ Material:
     - _TexturePixelSize: 4
     - _TextureScale: 0.08
     m_Colors:
-    - _SecondaryTextureSpeed: {r: -0.2, g: 0.1, b: 0, a: 0}
-    - _SecondaryTextureTiling: {r: 1, g: 3, b: 0, a: 0}
+    - _SecondaryTextureSpeed: {r: -0.4, g: 0, b: 0, a: 0}
+    - _SecondaryTextureTiling: {r: 1, g: 4, b: 0, a: 0}
     - _TexturePixelizedSize: {r: 8, g: 2, b: 0, a: 0}
-    - _TextureSpeed: {r: 0.6, g: -0.2, b: 0, a: 0}
+    - _TextureSpeed: {r: 0.8, g: 0, b: 0, a: 0}
     - _TextureTiling: {r: 1, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6959945075843560348
