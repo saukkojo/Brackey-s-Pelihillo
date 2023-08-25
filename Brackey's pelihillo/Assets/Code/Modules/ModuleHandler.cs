@@ -8,6 +8,8 @@ public class ModuleHandler : MonoBehaviour
     public Module[] shallowModules = null;
     public Module[] deepModules = null;
     public Module[] abyssModules = null;
+    private float _maxDepth;
+    public float maxDepth => _maxDepth;
 
     private void Awake()
     {
@@ -18,16 +20,18 @@ public class ModuleHandler : MonoBehaviour
 
     public void PlaceModules()
     {
-        float increase = Module.HEIGHT * 0.5f;
-        float depth = increase;
+        float increase = Module.HEIGHT;
+        float depth = increase * 0.5f;
         for (int i = 0; i < System.Enum.GetNames(typeof(ModuleType)).Length; i++)
         {
             for (int j = 0; j < MODULES_PER_DEPTH; j++)
             {
                 PlaceModule(depth, (ModuleType)i);
                 depth += increase;
+
             }
         }
+        _maxDepth = depth - increase * 0.5f;
     }
 
     private void PlaceModule(float depth, ModuleType type)

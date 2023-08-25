@@ -14,6 +14,8 @@ public class Bubble : Collectible, IBubble
     private Vector2 _spawnPos;
     private float _randomness = 1;
 
+    private bool _onScreen = false;
+
     public float air => _air;
     public float speedBoost => _speedBoost;
 
@@ -30,8 +32,18 @@ public class Bubble : Collectible, IBubble
 
     private void FixedUpdate()
     {
+        if (!_onScreen)
+        {
+            return;
+        }
+
         Vector2 movement = new Vector2(Mathf.Sin(Time.timeSinceLevelLoad * _randomness) * 0.5f, velocity * (1 + _air * 0.1f));
         movement *= Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + movement);
+    }
+
+    private void OnWillRenderObject()
+    {
+        _onScreen = true;
     }
 }
