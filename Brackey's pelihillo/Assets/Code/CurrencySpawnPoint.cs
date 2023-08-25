@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleSpawnPoint : MonoBehaviour
+public class CurrencySpawnPoint : MonoBehaviour
 {
     public int itemsPlaced => _itemsPlaced;
     private int _itemsPlaced = 0;

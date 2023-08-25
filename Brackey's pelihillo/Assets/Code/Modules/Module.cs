@@ -9,12 +9,12 @@ public class Module : MonoBehaviour
     public float maxDepth = HEIGHT;
 
     public Collectible[] collectibles = null;
-    private CollectibleSpawnPoint[] spawnPoints = null;
+    private CurrencySpawnPoint[] spawnPoints = null;
     public int spawnAmount = 1;
 
     private void Awake()
     {
-        spawnPoints = GetComponentsInChildren<CollectibleSpawnPoint>();
+        spawnPoints = GetComponentsInChildren<CurrencySpawnPoint>();
         spawnAmount = Mathf.Clamp(spawnAmount, 1, spawnPoints.Length);
     }
 
@@ -32,7 +32,7 @@ public class Module : MonoBehaviour
             }
         }
 
-        CollectibleSpawnPoint GetSpawnPoint()
+        CurrencySpawnPoint GetSpawnPoint()
         {
             var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             int tries = 1;
