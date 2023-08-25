@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Bank bank;
     public Stats stats;
 
-    private ModuleHandler _moduleHanlder;
+    public ModuleHandler moduleHanlder;
 
     public static event Action<GameState> onStateChange;
     public GameState state = GameState.Store;
@@ -24,8 +24,8 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Init()
     {
-        _moduleHanlder = this.AddOrGetComponent<ModuleHandler>();
-        _moduleHanlder.PlaceModules();
+        moduleHanlder = this.AddOrGetComponent<ModuleHandler>();
+        moduleHanlder.PlaceModules();
         Reset();
     }
 

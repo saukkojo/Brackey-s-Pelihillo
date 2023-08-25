@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-    public const int HEIGHT = 30;
+    public const int HEIGHT = 15;
     public float minDepth = 0;
     public float maxDepth = HEIGHT;
 
