@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: _value
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 3144101187354401610, guid: 4d4d656fc74b3434db6331187e0631cd, type: 3}
+      propertyPath: pickUpEffect
+      value: 
+      objectReference: {fileID: 2789333863399316175, guid: 75e5dbe9aced6e44f87e73314340bf3b, type: 3}
     - target: {fileID: 7480653628391579699, guid: 4d4d656fc74b3434db6331187e0631cd, type: 3}
       propertyPath: m_Name
       value: Pearl
