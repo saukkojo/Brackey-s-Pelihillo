@@ -10,10 +10,15 @@ public class GameManager : Singleton<GameManager>
     public Bank bank;
     public Stats stats;
 
-    public ModuleHandler moduleHanlder;
+    public ModuleHandler moduleHandler;
 
     public static event Action<GameState> onStateChange;
-    public GameState state = GameState.Store;
+    public GameState state = GameState.Begun;
+
+    private int _fundsAccumulated = 0;
+    private int _pearlsCollected = 0;
+    public int fundsAccumulated => _fundsAccumulated;
+    public int pearlsCollected => _pearlsCollected;
 
     public enum GameState
     {
@@ -24,8 +29,9 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Init()
     {
-        moduleHanlder = this.AddOrGetComponent<ModuleHandler>();
-        moduleHanlder.PlaceModules();
+        moduleHandler = this.AddOrGetComponent<ModuleHandler>();
+        stats = this.AddOrGetComponent<Stats>();
+        moduleHandler.PlaceModules();
         Reset();
     }
 
@@ -41,10 +47,17 @@ public class GameManager : Singleton<GameManager>
 
     private void OnCollect(ICollectible collectible)
     {
+        if (state != GameState.Begun)
+        {
+            return;
+        }
+
+
         ICurrency currency = collectible as ICurrency;
         if (currency != null)
         {
             bank.AddFunds(currency);
+            _fundsAccumulated += currency.value;
         }
     }
 
@@ -55,13 +68,27 @@ public class GameManager : Singleton<GameManager>
             onStateChange(state);
         }
 
+        switch (state)
+        {
+            case GameState.Begun:
+                moduleHandler.PlaceModules();
+                _fundsAccumulated = 0;
+                _pearlsCollected = 0;
+                break;
+            case GameState.Ended:
+                break;
+            case GameState.Store:
+                moduleHandler.CleanUp();
+                break;
+        }
+
         this.state = state;
     }
 
     public void Reset()
     {
         bank = new Bank(0);
-        stats = new Stats();
+        stats.Reset();
     }
 
     public void Begin()

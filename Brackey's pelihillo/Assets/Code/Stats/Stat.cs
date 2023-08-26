@@ -15,14 +15,15 @@ public class Stat
     public bool canUpgrade => currentLevel < upgradeLevels;
     StatType type;
 
-    public Stat(float value, StatType type)
+    public Stat(float value, float increasePerUpgrade, StatType type)
     {
         baseValue = value;
         this.type = type;
+        this.increasePerUpgrade = increasePerUpgrade;
     }
 
     public void Upgrade()
     {
-        currentLevel = Mathf.Clamp(currentLevel++, 0, upgradeLevels);
+        currentLevel = Mathf.Clamp(currentLevel + 1, 0, upgradeLevels);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,29 @@ using UnityEngine;
 public class Bank
 {
     private int _funds = 0;
-    public int funds => _funds;
+    public int funds
+    {
+        get => _funds;
+        private set
+        {
+            if (onFundChange != null)
+            {
+                onFundChange(value);
+            }
+
+            _funds = value;
+        }
+    }
+
+    public static event Action<int> onFundChange;
 
     public Bank(int startingFunds)
     {
         _funds = startingFunds;
     }
 
-    public bool HasFundsFor(int amount) => amount >= _funds;
-    public void AddFunds(int amount) => _funds += amount;
+    public bool HasFundsFor(int amount) => amount <= funds;
+    public void AddFunds(int amount) => funds += amount;
     public void AddFunds(ICurrency currency) => AddFunds(currency.value);
 
     public bool Take(int amount)
@@ -23,7 +38,7 @@ public class Bank
             return false;
         }
 
-        _funds -= amount;
+        funds -= amount;
         return true;
     }
 }

@@ -4,39 +4,47 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-[System.Serializable]
-public class Stats
+public class Stats : MonoBehaviour
 {
 
-    [SerializeField]
-    private int _baseJumpHeight = 5;
-    [SerializeField]
-    private float _baseSpeed = 2;
-    [SerializeField]
-    private float _baseTurnRate = 3;
-    [SerializeField]
-    private float _baseLightRadius;
+    [Header("Jump")]
+    [SerializeField] private int _baseJumpHeight = 5;
+    [SerializeField] private int _jumpIncreasePerUpgrade = 5;
+
+    [Header("Speed")]
+    [SerializeField] private float _baseSpeed = 2;
+    [SerializeField] private float _speedIncreasePerUpgrade = 0.25f;
+
+    [Header("Turn")]
+    [SerializeField] private float _baseTurnRate = 3;
+    [SerializeField] private float _turnIncreasePerUpgrade = 0.2f;
+
+    [Header("Light")]
+    [SerializeField] private float _baseLightRadius;
+    [SerializeField] private float _lightIncreasePerUpgrade = 1;
 
     public Stat jumpHeight;
     public Stat swimmingSpeed;
     public Stat turnRate;
     public Stat lightRadius;
+
+    [Header("Other")]
     public bool boosterUnlocked = false;
     public bool flippersUnlocked = false;
 
     public static event Action<StatType> onStatUpgraded;
 
-    public Stats()
+    private void Awake()
     {
         Reset();
     }
 
     public void Reset()
     {
-        jumpHeight = new Stat(_baseJumpHeight, StatType.JumpHeight);
-        swimmingSpeed = new Stat(_baseSpeed, StatType.Speed);
-        turnRate = new Stat(_baseTurnRate, StatType.TurnRate);
-        lightRadius = new Stat(_baseLightRadius, StatType.LightRadius);
+        jumpHeight = new Stat(_baseJumpHeight, _jumpIncreasePerUpgrade, StatType.JumpHeight);
+        swimmingSpeed = new Stat(_baseSpeed, _speedIncreasePerUpgrade, StatType.Speed);
+        turnRate = new Stat(_baseTurnRate, _turnIncreasePerUpgrade, StatType.TurnRate);
+        lightRadius = new Stat(_baseLightRadius, _lightIncreasePerUpgrade, StatType.LightRadius);
         boosterUnlocked = false;
         flippersUnlocked = false;
     }
@@ -59,6 +67,22 @@ public class Stats
                 return !flippersUnlocked;
             default: return false;
         }
+    }
+
+    public int GetLevel(StatType type)
+    {
+        switch (type)
+        {
+            case StatType.Speed:
+                return swimmingSpeed.currentLevel;
+            case StatType.TurnRate:
+                return turnRate.currentLevel;
+            case StatType.JumpHeight:
+                return jumpHeight.currentLevel;
+            case StatType.LightRadius:
+                return lightRadius.currentLevel;
+        }
+        return 0;
     }
 
     public void UpgradeStat(StatType type)

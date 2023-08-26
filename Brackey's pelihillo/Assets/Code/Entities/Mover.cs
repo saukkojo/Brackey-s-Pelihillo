@@ -6,7 +6,7 @@ public class Mover : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
     public float baseSpeed = 1.0f;
-    protected float _currentSpeed, _speed;
+    public float _currentSpeed, _speed;
     public float turnRate = 1.0f;
     public float currentRot, targetRot;
     protected float _deltaRot;
@@ -34,8 +34,9 @@ public class Mover : MonoBehaviour
         targetRot -= direction * turnRate;
     }
 
-    public virtual void TurnTo(Vector2 direction)
+    public virtual void TurnTo(Vector2 direction, bool smoothOut = false)
     {
+        direction.Normalize();
         float dot = Vector2.Dot(transform.up, direction);
         bool clockWise = dot < 0;
 
@@ -50,6 +51,11 @@ public class Mover : MonoBehaviour
         else
         {
             degrees += 90f * (1 - dot);
+        }
+
+        if (smoothOut)
+        {
+            degrees -= _deltaRot;
         }
 
         if (clockWise)

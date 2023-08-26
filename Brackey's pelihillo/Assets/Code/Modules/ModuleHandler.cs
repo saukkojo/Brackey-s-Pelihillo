@@ -10,6 +10,7 @@ public class ModuleHandler : MonoBehaviour
     public Module[] abyssModules = null;
     private float _maxDepth;
     public float maxDepth => _maxDepth;
+    private GameObject _modules;
 
     private void Awake()
     {
@@ -20,6 +21,12 @@ public class ModuleHandler : MonoBehaviour
 
     public void PlaceModules()
     {
+        if (!_modules)
+        {
+            _modules = new GameObject("Modules");
+            _modules.transform.parent = transform;
+        }
+
         float increase = Module.HEIGHT;
         float depth = increase * 0.5f;
         for (int i = 0; i < System.Enum.GetNames(typeof(ModuleType)).Length; i++)
@@ -50,15 +57,12 @@ public class ModuleHandler : MonoBehaviour
                 break;
         }
 
-        var module = Instantiate(modulePrefab, transform);
+        var module = Instantiate(modulePrefab, _modules.transform);
         module.Setup(depth);
     }
 
     public void CleanUp()
     {
-        while (transform.childCount > 0)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-        }
+        Destroy(_modules);
     }
 }

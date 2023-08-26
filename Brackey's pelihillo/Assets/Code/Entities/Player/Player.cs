@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,18 @@ public class Player : Singleton<Player>
     private ParticleSystem _bubbleParticle;
     private InputReader _inputReader;
     private Rigidbody2D _rigidbody;
+    private Collider2D _collider;
     [SerializeField]
     private AudioSource _diveSource;
+    public float depth = 0;
 
     private bool useBooster = false;
     private bool waterHit = false;
     public bool invertTurning = false;
 
     public float air = 100;
+    private float _maxAir;
+    public float maxAir => _maxAir;
 
     private enum PlayerState
     {
@@ -26,6 +31,7 @@ public class Player : Singleton<Player>
         Freefall,
         Swim
     }
+
     [SerializeField]
     private PlayerState _state = PlayerState.None;
 
@@ -36,6 +42,7 @@ public class Player : Singleton<Player>
         _mover = this.AddOrGetComponent<PlayerMover>();
         _inputReader = this.AddOrGetComponent<InputReader>();
         _rigidbody = this.AddOrGetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
         _sprite = GetComponentInChildren<PlayerSprite>();
         _boost = new PlayerMover.Boost(_mover.baseSpeed * 0.75f);
         _inputReader.boostCallback = (value) =>
@@ -54,6 +61,7 @@ public class Player : Singleton<Player>
                 _mover.RemoveBoost(_boost);
             }
         };
+        _maxAir = air;
         ChangeState(_state);
     }
 
@@ -69,6 +77,21 @@ public class Player : Singleton<Player>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_state != PlayerState.Swim)
+        {
+            return;
+        }
+
+        if (collision.TryGetComponent<ICollectible>(out var collectible))
+        {
+            var bubble = collectible as IBubble;
+            if (bubble != null)
+            {
+                air = Mathf.Clamp(air + bubble.air, 0, _maxAir);
+            }
+            collectible.Collect();
+        }
+
         if (collision.TryGetComponent<Obstacle>(out var obstacle))
         {
             air -= obstacle.damage;
@@ -126,6 +149,7 @@ public class Player : Singleton<Player>
                 }
                 break;
         }
+        depth = transform.position.y < 0 ? Mathf.Abs(transform.position.y) : 0;
     }
 
     private IEnumerator SlowRoutine()
@@ -150,16 +174,20 @@ public class Player : Singleton<Player>
         switch (state)
         {
             case PlayerState.None:
+                _collider.isTrigger = true;
                 _mover.TurnTo(Vector2.up);
                 break;
 
             case PlayerState.Freefall:
+                _collider.isTrigger = true;
+                air = _maxAir;
                 _mover.TurnTo(Vector2.down);
                 waterHit = false;
                 _rigidbody.gravityScale = 1;
                 break;
 
             case PlayerState.Swim:
+                _collider.isTrigger = false;
                 _rigidbody.gravityScale = 0;
                 break;
         }

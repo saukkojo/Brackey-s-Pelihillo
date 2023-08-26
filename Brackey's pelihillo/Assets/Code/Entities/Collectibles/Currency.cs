@@ -11,6 +11,5 @@ public class Currency : Collectible, ICurrency
     public override void Collect()
     {
         base.Collect();
-        GameManager.current.bank.AddFunds(value);
     }
 }

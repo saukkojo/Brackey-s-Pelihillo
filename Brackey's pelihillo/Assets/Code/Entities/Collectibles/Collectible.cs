@@ -16,22 +16,12 @@ public abstract class Collectible : MonoBehaviour, ICollectible
         {
             onCollect.Invoke(this);
         }
+        Destroy(gameObject);
     }
 
     protected virtual void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
         _collider.isTrigger = true;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.TryGetComponent<Player>(out var _))
-        {
-            return;
-        }
-
-        Collect();
-        Destroy(gameObject);
     }
 }

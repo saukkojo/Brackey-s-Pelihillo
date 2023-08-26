@@ -9,9 +9,12 @@ public class Store : MonoBehaviour
     public static event Action<StatType> upgradePurchased;
     public UnityEvent<StatType> onUpgradePurchased;
 
-    public void PurchaseUpgrade(StatType type, int cost)
+    public void PurchaseUpgrade(StoreItem item)
     {
-        if (!GameManager.current.bank.Take(cost))
+        StatType type = item.statType;
+        int cost = item.cost;
+
+        if (!GameManager.current.bank.HasFundsFor(cost))
         {
             return;
         }
@@ -24,6 +27,7 @@ public class Store : MonoBehaviour
         }
 
         stats.UpgradeStat(type);
+        GameManager.current.bank.Take(cost);
 
         if (upgradePurchased != null)
         {

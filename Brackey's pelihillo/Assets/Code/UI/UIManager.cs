@@ -5,8 +5,15 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     private Store _store;
-    [SerializeField] private GameObject _hud;
-    [SerializeField] private GameObject _endScreen;
+    private Hud _hud;
+    private Endscreen _endScreen;
+
+    private void Awake()
+    {
+        _store = GetComponentInChildren<Store>();
+        _hud = GetComponentInChildren<Hud>();
+        _endScreen = GetComponentInChildren<Endscreen>();
+    }
 
     private void Start()
     {
@@ -29,19 +36,29 @@ public class UIManager : MonoBehaviour
         {
             case GameManager.GameState.Begun:
                 _store.gameObject.Disable();
-                _hud.Enable();
-                _endScreen.Disable();
+                _hud.gameObject.Enable();
+                _endScreen.gameObject.Disable();
                 break;
             case GameManager.GameState.Ended:
                 _store.gameObject.Disable();
-                _hud.Disable();
-                _endScreen.Enable();
+                _hud.gameObject.Disable();
+                _endScreen.gameObject.Enable();
                 break;
             case GameManager.GameState.Store:
                 _store.gameObject.Enable();
-                _hud.Disable();
-                _endScreen.Disable();
+                _hud.gameObject.Disable();
+                _endScreen.gameObject.Disable();
                 break;
         }
+    }
+
+    public void GoStore()
+    {
+        GameManager.current.Store();
+    }
+
+    public void Begin()
+    {
+        GameManager.current.Begin();
     }
 }

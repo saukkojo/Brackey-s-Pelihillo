@@ -14,7 +14,7 @@ public class Bubble : Collectible, IBubble
     private Vector2 _spawnPos;
     private float _randomness = 1;
 
-    private bool _onScreen = false;
+    private bool _move = false;
 
     public float air => _air;
     public float speedBoost => _speedBoost;
@@ -32,7 +32,7 @@ public class Bubble : Collectible, IBubble
 
     private void FixedUpdate()
     {
-        if (!_onScreen)
+        if (!_move)
         {
             return;
         }
@@ -42,8 +42,13 @@ public class Bubble : Collectible, IBubble
         _rigidbody.MovePosition(_rigidbody.position + movement);
     }
 
+    public void Spawn()
+    {
+        _move = true;
+    }
+
     private void OnWillRenderObject()
     {
-        _onScreen = true;
+        _move = true;
     }
 }

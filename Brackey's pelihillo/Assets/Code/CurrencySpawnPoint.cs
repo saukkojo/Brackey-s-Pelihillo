@@ -13,7 +13,9 @@ public class CurrencySpawnPoint : MonoBehaviour
 
     public void Place(Collectible collectible)
     {
-        Instantiate(collectible, transform.position, Quaternion.identity);
+        if (collectible == null) return;
+        var parent = transform.parent != null ? transform.parent : transform;
+        Instantiate(collectible, transform.position, Quaternion.identity, parent);
         _itemsPlaced++;
     }
 }
