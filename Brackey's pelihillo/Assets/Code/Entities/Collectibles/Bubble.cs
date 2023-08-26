@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Bubble : Collectible, IBubble
 {
-    public const float MIN_AIR = 5, MAX_AIR = 20;
-
-    [SerializeField, Range(MIN_AIR, MAX_AIR)]
+    [SerializeField]
     private float _air = 10f;
-    [SerializeField, Range(0, 1f)]
+    [SerializeField]
     private float _speedBoost = 0.05f;
     private float velocity = 0.3f;
     private Vector2 _spawnPos;

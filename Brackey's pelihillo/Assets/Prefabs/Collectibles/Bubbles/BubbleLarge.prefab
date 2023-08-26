@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 916093902370912834, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
       propertyPath: _air
-      value: 20
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 916093902370912834, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
+      propertyPath: _speedBoost
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1264155623055987968, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
