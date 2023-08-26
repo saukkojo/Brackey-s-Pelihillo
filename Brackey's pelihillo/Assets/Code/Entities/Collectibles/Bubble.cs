@@ -19,6 +19,8 @@ public class Bubble : Collectible, IBubble
 
     private Rigidbody2D _rigidbody;
 
+    [SerializeField] private GameObject pickUpEffect;
+
     protected override void Awake()
     {
         base.Awake();
@@ -48,5 +50,11 @@ public class Bubble : Collectible, IBubble
     private void OnWillRenderObject()
     {
         _move = true;
+    }
+
+    public override void Collect()
+    {
+        base.Collect();
+        GameObject effect = Instantiate(pickUpEffect, this.transform.position, Quaternion.identity);
     }
 }

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: _speedBoost
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 916093902370912834, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
+      propertyPath: pickUpEffect
+      value: 
+      objectReference: {fileID: 1392307562919827744, guid: ef56207bca9863f42baf002a5be2f687, type: 3}
     - target: {fileID: 1264155623055987968, guid: ffa26a23dd836a748aa09ee5609f6aef, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 0.5
