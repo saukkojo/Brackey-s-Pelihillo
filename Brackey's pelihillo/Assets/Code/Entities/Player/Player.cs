@@ -208,11 +208,11 @@ public class Player : Singleton<Player>
         useBooster = stats.boosterUnlocked;
         if (stats.flippersUnlocked)
         {
-            _mover.lerpAbuse = 2;
+            _mover.lerpAbuse = 3;
         }
         else
         {
-            _mover.lerpAbuse = 1;
+            _mover.lerpAbuse = 1.5f;
         }
 
         ChangeState(PlayerState.Freefall);

@@ -386,7 +386,7 @@ MonoBehaviour:
   targetRot: 0
   slowOnTurn: 1
   maxTurnSlow: 0.5
-  lerpAbuse: 1
+  lerpAbuse: 1.5
 --- !u!1 &5056222606017956362
 GameObject:
   m_ObjectHideFlags: 0
