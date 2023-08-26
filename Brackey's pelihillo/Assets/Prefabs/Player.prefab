@@ -284,7 +284,7 @@ Transform:
   - {fileID: 804138306674312239}
   - {fileID: 1977293785851969116}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7967469948992573609
 MonoBehaviour:
@@ -302,7 +302,9 @@ MonoBehaviour:
   _diveSource: {fileID: 7630587923534984926}
   depth: 0
   invertTurning: 1
-  air: 30
+  air: 25
+  fuel: 20
+  maxFuel: 0
   _state: 1
 --- !u!70 &4228582377569818193
 CapsuleCollider2D:

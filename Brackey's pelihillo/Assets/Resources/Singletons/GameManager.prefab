@@ -88,7 +88,7 @@ MonoBehaviour:
   _baseJumpHeight: 5
   _jumpIncreasePerUpgrade: 5
   _baseSpeed: 2
-  _speedIncreasePerUpgrade: 0.25
+  _speedIncreasePerUpgrade: 0.15
   _baseTurnRate: 3
   _turnIncreasePerUpgrade: 0.2
   _baseLightRadius: 5

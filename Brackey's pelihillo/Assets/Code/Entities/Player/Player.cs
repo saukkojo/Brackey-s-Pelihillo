@@ -25,6 +25,10 @@ public class Player : Singleton<Player>
     private float _maxAir;
     public float maxAir => _maxAir;
 
+    public float fuel = 20;
+    public float maxFuel;
+    private bool _boosting = false;
+
     private enum PlayerState
     {
         None,
@@ -47,7 +51,7 @@ public class Player : Singleton<Player>
         _boost = new PlayerMover.Boost(_mover.baseSpeed * 0.75f);
         _inputReader.boostCallback = (value) =>
         {
-            if (!useBooster)
+            if (!useBooster || fuel < 0)
             {
                 return;
             }
@@ -55,13 +59,16 @@ public class Player : Singleton<Player>
             if (value)
             {
                 _mover.AddBoost(_boost);
+                _boosting = true;
             }
             else
             {
                 _mover.RemoveBoost(_boost);
+                _boosting = false;
             }
         };
         _maxAir = air;
+        maxFuel = fuel;
         ChangeState(_state);
     }
 
@@ -119,7 +126,7 @@ public class Player : Singleton<Player>
                 break;
 
             case PlayerState.Freefall:
-                if (_rigidbody.position.y < 0 && waterHit == false)
+                if (transform.position.y < 0 && waterHit == false)
                 {
                     waterHit = true;
                     if (_diveSource != null)
@@ -148,6 +155,15 @@ public class Player : Singleton<Player>
                     GameManager.current.End();
                 }
                 break;
+        }
+        if (_boosting)
+        {
+            fuel -= Time.fixedDeltaTime;
+            if (fuel < 0)
+            {
+                _mover.RemoveBoost(_boost);
+                _boosting = false;
+            }
         }
         depth = transform.position.y < 0 ? Mathf.Abs(transform.position.y) : 0;
     }
@@ -181,6 +197,7 @@ public class Player : Singleton<Player>
             case PlayerState.Freefall:
                 _collider.isTrigger = true;
                 air = _maxAir;
+                fuel = maxFuel;
                 _mover.TurnTo(Vector2.down);
                 waterHit = false;
                 _rigidbody.gravityScale = 1;
