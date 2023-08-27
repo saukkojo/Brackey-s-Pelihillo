@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerMover : Mover
 {
+    [SerializeField]
+    private VisualEffect boosterEffect;
 
     [SerializeField]
     private HashSet<Boost> _boosts = new HashSet<Boost>();
@@ -11,11 +14,13 @@ public class PlayerMover : Mover
     public void AddBoost(Boost boost)
     {
         _boosts.Add(boost);
+        boosterEffect.SendEvent("Start");
     }
 
     public void RemoveBoost(Boost boost)
     {
         _boosts.Remove(boost);
+        boosterEffect.SendEvent("Stop");
     }
 
     private void Update()
