@@ -13,6 +13,8 @@ public class ModuleHandler : MonoBehaviour
     public float deepStartDepth;
     private GameObject _modules;
 
+    [SerializeField] private GiantClam _clamPrefab;
+
     private void Awake()
     {
         Debug.Assert(shallowModules != null);
@@ -44,6 +46,7 @@ public class ModuleHandler : MonoBehaviour
             }
         }
         _maxDepth = depth - increase * 0.5f;
+        Instantiate(_clamPrefab, new Vector2(0, -depth), Quaternion.identity, _modules.transform);
     }
 
     private void PlaceModule(float depth, ModuleType type)

@@ -84,6 +84,7 @@ MonoBehaviour:
   - {fileID: 8848662896351669042, guid: b843bc7864cb2834aa32852cb947aec3, type: 3}
   - {fileID: 840395267336163800, guid: 37c93ee1e5d91f44eb1d1c4636ac794f, type: 3}
   deepStartDepth: 0
+  _clamPrefab: {fileID: 8530961234110104906, guid: 6e8dedf0b170ded41974641b2a93cb40, type: 3}
 --- !u!114 &1833701909216557913
 MonoBehaviour:
   m_ObjectHideFlags: 0

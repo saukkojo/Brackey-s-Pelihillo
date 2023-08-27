@@ -94,23 +94,26 @@ public class Player : Singleton<Player>
             return;
         }
 
-        if (collision.TryGetComponent<ICollectible>(out var collectible))
+        if (collision.TryGetComponent<IBubble>(out var bubble))
         {
-            var bubble = collectible as IBubble;
-            if (bubble != null)
+            air = Mathf.Clamp(air + bubble.air, 0, _maxAir);
+            if (_bubbleSource != null)
             {
-                air = Mathf.Clamp(air + bubble.air, 0, _maxAir);
-                if (_bubbleSource != null)
-                {
-                    _bubbleSource.Play();
-                }
+                _bubbleSource.Play();
             }
+        }
 
-            var currency = collectible as Currency;
-            if (currency != null && _dingSource != null)
+        if (collision.TryGetComponent<ICurrency>(out var currency))
+        {
+            GameManager.current.bank.AddFunds(currency);
+            if (_dingSource != null)
             {
                 _dingSource.Play();
             }
+        }
+
+        if (collision.TryGetComponent<ICollectible>(out var collectible))
+        {
             collectible.Collect();
         }
 

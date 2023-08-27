@@ -13,7 +13,6 @@ public class Currency : Collectible, ICurrency
     public override void Collect()
     {
         base.Collect();
-        GameManager.current.bank.AddFunds(value);
 
         GameObject effect = Instantiate(pickUpEffect, this.transform.position, Quaternion.identity);
         //Destroy(pickUpEffect, 3f);
