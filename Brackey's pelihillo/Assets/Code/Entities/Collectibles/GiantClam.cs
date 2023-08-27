@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GiantClam : Obstacle, ICurrency
 {
-    public int value => 500;
+    public int value => 1000;
 }

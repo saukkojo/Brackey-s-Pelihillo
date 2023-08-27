@@ -919,7 +919,7 @@ MonoBehaviour:
   depth: 0
   invertTurning: 1
   air: 25
-  fuel: 15
+  fuel: 7
   maxFuel: 0
   _state: 1
 --- !u!70 &4228582377569818193

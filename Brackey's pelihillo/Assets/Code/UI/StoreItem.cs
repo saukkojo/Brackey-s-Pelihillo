@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StoreItem : MonoBehaviour
 {
 
-    public const float increasePerPurchase = 0.1f;
+    public const float increasePerPurchase = 0.2f;
     public StatType statType;
     public int baseCost = 50;
     public int cost => Mathf.RoundToInt(baseCost + baseCost * increasePerPurchase * GameManager.current.stats.GetLevel(statType));
