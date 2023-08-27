@@ -10,6 +10,7 @@ public class ModuleHandler : MonoBehaviour
     public Module[] abyssModules = null;
     private float _maxDepth;
     public float maxDepth => _maxDepth;
+    public float deepStartDepth;
     private GameObject _modules;
 
     private void Awake()
@@ -36,6 +37,10 @@ public class ModuleHandler : MonoBehaviour
                 PlaceModule(depth, (ModuleType)i);
                 depth += increase;
 
+            }
+            if ((ModuleType)i == ModuleType.Deep)
+            {
+                deepStartDepth = depth - increase * 0.5f;
             }
         }
         _maxDepth = depth - increase * 0.5f;

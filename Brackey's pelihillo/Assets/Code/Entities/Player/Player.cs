@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Player : Singleton<Player>
 {
@@ -10,9 +11,11 @@ public class Player : Singleton<Player>
     private PlayerSprite _sprite;
     [SerializeField]
     private ParticleSystem _bubbleParticle;
+    [SerializeField] private Light2D _spotLight;
     private InputReader _inputReader;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
+    [Header("Audio sources")]
     [SerializeField] private AudioSource _diveSource;
     [SerializeField] private AudioSource _hurtSource;
     [SerializeField] private AudioSource _bubbleSource;
@@ -240,6 +243,7 @@ public class Player : Singleton<Player>
         _mover.turnRate = stats.turnRate.value;
         _mover.baseSpeed = stats.swimmingSpeed.value;
         useBooster = stats.boosterUnlocked;
+        _spotLight.pointLightOuterRadius = stats.lightRadius.value;
         if (stats.flippersUnlocked)
         {
             _mover.lerpAbuse = 4f;

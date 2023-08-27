@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3183528820622792057
 MonoBehaviour:
@@ -83,6 +83,7 @@ MonoBehaviour:
   - {fileID: 7764817347203371556, guid: c992a7cc60a873b47904adffa4d3bb71, type: 3}
   - {fileID: 8848662896351669042, guid: b843bc7864cb2834aa32852cb947aec3, type: 3}
   - {fileID: 840395267336163800, guid: 37c93ee1e5d91f44eb1d1c4636ac794f, type: 3}
+  deepStartDepth: 0
 --- !u!114 &1833701909216557913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   _baseTurnRate: 3
   _turnIncreasePerUpgrade: 0.2
   _baseLightRadius: 5
-  _lightIncreasePerUpgrade: 1
+  _lightIncreasePerUpgrade: 0.25
   jumpHeight:
     increasePerUpgrade: 0
     upgradeLevels: 10

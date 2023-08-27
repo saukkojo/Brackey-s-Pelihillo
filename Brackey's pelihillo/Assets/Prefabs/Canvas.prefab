@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: see better
+  m_text: MORE LIGHT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb5e5d8f1f374044f91d9e91f67a2f40, type: 2}
   m_sharedMaterial: {fileID: 3471214335487788279, guid: fb5e5d8f1f374044f91d9e91f67a2f40, type: 2}
@@ -2660,7 +2660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4799839868989290863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2678,10 +2678,10 @@ RectTransform:
   m_Father: {fileID: 8926112848097222172}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 471.9, y: -164.61}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6656151422576462042
 CanvasRenderer:
@@ -2963,7 +2963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb5e5d8f1f374044f91d9e91f67a2f40, type: 2}
   m_sharedMaterial: {fileID: 3471214335487788279, guid: fb5e5d8f1f374044f91d9e91f67a2f40, type: 2}
@@ -4142,7 +4142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statType: 2
-  baseCost: 50
+  baseCost: 30
   _buttonTxt: {fileID: 2338316035513372597}
 --- !u!1 &8767576079863783062
 GameObject:

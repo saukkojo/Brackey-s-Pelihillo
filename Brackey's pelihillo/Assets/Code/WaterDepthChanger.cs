@@ -33,7 +33,7 @@ public class WaterDepthChanger : MonoBehaviour
 
     private void Update()
     {
-        float t = _player.depth / _handler.maxDepth;
+        float t = _player.depth / _handler.deepStartDepth;
         _mat.SetFloat("_Depth", t);
         _light.intensity = 1 - t;
     }
