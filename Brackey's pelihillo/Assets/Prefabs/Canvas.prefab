@@ -2924,7 +2924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a864a7efb1c17dc41a4ac35e31c7d2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statType: 0
+  statType: 3
   baseCost: 150
   _buttonTxt: {fileID: 9075128990962752812}
 --- !u!1 &6197331257303891164
