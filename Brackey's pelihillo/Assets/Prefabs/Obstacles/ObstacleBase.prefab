@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2774685133719086969}
   - component: {fileID: 4843847275678718545}
   - component: {fileID: 7838982349522600015}
+  - component: {fileID: 5390116836579979447}
   m_Layer: 0
   m_Name: ObstacleBase
   m_TagString: Untagged
@@ -144,3 +145,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!114 &5390116836579979447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137773685120462838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11b0824628c6b545bbcf88833cbe8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
