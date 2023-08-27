@@ -66,13 +66,23 @@ MonoBehaviour:
   - {fileID: 7550049394702284679, guid: 38a2ffb9199c23d42ba1015168e6a9f9, type: 3}
   - {fileID: 5417083495431340030, guid: e05ebe947dad23346b61ae6062fd35bd, type: 3}
   - {fileID: 8848662896351669042, guid: b843bc7864cb2834aa32852cb947aec3, type: 3}
+  - {fileID: 6970961625295382745, guid: c1a837371db99cb4cb3d0d2ee4bcfc9c, type: 3}
+  - {fileID: 8460551989980691026, guid: a87c90ed2939bda46b64b75e624b091f, type: 3}
+  - {fileID: 6970961625295382745, guid: c1a837371db99cb4cb3d0d2ee4bcfc9c, type: 3}
   deepModules:
   - {fileID: 5797165830698678763, guid: 5faabac85b18f584a8e717392fec4b8c, type: 3}
-  - {fileID: 840395267336163800, guid: 37c93ee1e5d91f44eb1d1c4636ac794f, type: 3}
   - {fileID: 1043633851301291016, guid: d6a2927efbf93e6468bd0d6ee8095875, type: 3}
+  - {fileID: 1158938720074770764, guid: d749179053a6d78499c8cb134927cf85, type: 3}
+  - {fileID: 8460551989980691026, guid: a87c90ed2939bda46b64b75e624b091f, type: 3}
+  - {fileID: 883935689026103249, guid: b30a46bb48b94af4086b3ae8d0b59173, type: 3}
+  - {fileID: 8848662896351669042, guid: b843bc7864cb2834aa32852cb947aec3, type: 3}
   abyssModules:
   - {fileID: 8460551989980691026, guid: a87c90ed2939bda46b64b75e624b091f, type: 3}
   - {fileID: 379510705373528760, guid: 216e0ed86eb8331439c6e2cbce8fb2b3, type: 3}
+  - {fileID: 5720272274498586579, guid: a8c6208d747c94843a67a0b87cf44a98, type: 3}
+  - {fileID: 7764817347203371556, guid: c992a7cc60a873b47904adffa4d3bb71, type: 3}
+  - {fileID: 8848662896351669042, guid: b843bc7864cb2834aa32852cb947aec3, type: 3}
+  - {fileID: 840395267336163800, guid: 37c93ee1e5d91f44eb1d1c4636ac794f, type: 3}
 --- !u!114 &1833701909216557913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +98,7 @@ MonoBehaviour:
   _baseJumpHeight: 5
   _jumpIncreasePerUpgrade: 5
   _baseSpeed: 2
-  _speedIncreasePerUpgrade: 0.15
+  _speedIncreasePerUpgrade: 0.1
   _baseTurnRate: 3
   _turnIncreasePerUpgrade: 0.2
   _baseLightRadius: 5

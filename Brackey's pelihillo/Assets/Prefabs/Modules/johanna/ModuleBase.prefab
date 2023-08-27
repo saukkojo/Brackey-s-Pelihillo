@@ -1369,9 +1369,9 @@ MonoBehaviour:
   minDepth: 0
   maxDepth: 30
   collectibles:
-  - {fileID: 0}
-  - {fileID: 0}
-  spawnAmount: 1
+  - {fileID: 8537081235831505276, guid: e74397f5fd3a5b946803ef1e9b76594c, type: 3}
+  - {fileID: 8537081235831505276, guid: 7a846aa557458d44ba2fb6e1323e751c, type: 3}
+  spawnAmount: 2
 --- !u!1001 &709666756262317319
 PrefabInstance:
   m_ObjectHideFlags: 0

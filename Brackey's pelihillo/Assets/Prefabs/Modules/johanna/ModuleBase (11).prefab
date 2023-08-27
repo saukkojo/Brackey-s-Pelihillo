@@ -985,7 +985,7 @@ Transform:
   - {fileID: 2809589568653777316}
   - {fileID: 8001981858071824538}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7764817347203371556
 MonoBehaviour:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   minDepth: 0
   maxDepth: 30
   collectibles:
-  - {fileID: 0}
+  - {fileID: 8537081235831505276, guid: 7a846aa557458d44ba2fb6e1323e751c, type: 3}
   spawnAmount: 1
 --- !u!1001 &848209830832911873
 PrefabInstance:

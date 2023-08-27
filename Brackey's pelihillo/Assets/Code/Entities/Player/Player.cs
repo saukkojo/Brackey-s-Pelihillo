@@ -13,8 +13,10 @@ public class Player : Singleton<Player>
     private InputReader _inputReader;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
-    [SerializeField]
-    private AudioSource _diveSource;
+    [SerializeField] private AudioSource _diveSource;
+    [SerializeField] private AudioSource _hurtSource;
+    [SerializeField] private AudioSource _bubbleSource;
+    [SerializeField] private AudioSource _dingSource;
     public float depth = 0;
 
     private bool useBooster = false;
@@ -25,7 +27,7 @@ public class Player : Singleton<Player>
     private float _maxAir;
     public float maxAir => _maxAir;
 
-    public float fuel = 20;
+    public float fuel = 15;
     public float maxFuel;
     private bool _boosting = false;
 
@@ -95,6 +97,16 @@ public class Player : Singleton<Player>
             if (bubble != null)
             {
                 air = Mathf.Clamp(air + bubble.air, 0, _maxAir);
+                if (_bubbleSource != null)
+                {
+                    _bubbleSource.Play();
+                }
+            }
+
+            var currency = collectible as Currency;
+            if (currency != null && _dingSource != null)
+            {
+                _dingSource.Play();
             }
             collectible.Collect();
         }
@@ -106,6 +118,11 @@ public class Player : Singleton<Player>
             if (_bubbleParticle != null)
             {
                 _bubbleParticle.Play();
+            }
+
+            if (_hurtSource != null)
+            {
+                _hurtSource.Play();
             }
         }
     }
@@ -225,11 +242,11 @@ public class Player : Singleton<Player>
         useBooster = stats.boosterUnlocked;
         if (stats.flippersUnlocked)
         {
-            _mover.lerpAbuse = 3;
+            _mover.lerpAbuse = 4f;
         }
         else
         {
-            _mover.lerpAbuse = 1.5f;
+            _mover.lerpAbuse = 2f;
         }
 
         ChangeState(PlayerState.Freefall);

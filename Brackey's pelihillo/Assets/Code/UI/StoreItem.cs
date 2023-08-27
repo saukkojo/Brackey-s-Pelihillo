@@ -22,6 +22,14 @@ public class StoreItem : MonoBehaviour
         _buttonTxt.text = baseCost.ToString();
     }
 
+    private void OnValidate()
+    {
+        if (_buttonTxt != null)
+        {
+            _buttonTxt.text = baseCost.ToString();
+        }
+    }
+
     private void OnEnable()
     {
         Stats.onStatUpgraded += OnStatUpgraded;
